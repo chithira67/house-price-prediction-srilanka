@@ -107,12 +107,6 @@ with col1:
         help="Select the district where the property is located"
     )
 
-    area = st.selectbox(
-        "Area",
-        sorted(areas),
-        help="Specific area within the district"
-    )
-
     house_age = st.slider(
         "House Age (years)",
         min_value=0,
@@ -220,8 +214,7 @@ if predict_button:
         for col in feature_cols:
             if col.startswith('district_'):
                 input_data[col] = 1 if col == f"district_{district}" else 0
-            elif col.startswith('area_'):
-                input_data[col] = 1 if col == f"area_{area}" else 0
+        
             elif col.startswith('water_supply_'):
                 input_data[col] = 1 if col == f"water_supply_{water_supply}" else 0
             elif col.startswith('electricity_'):
